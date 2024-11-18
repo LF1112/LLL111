@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数1</title>
+    <script>
+         /*
+           高阶函数
+             -如果一个函数的参数或返回值是函数，则这个函数称为高阶函数
+             -为什么要将函数作为参数传递？(回调函数有什么作用)
+               -将函数作为参数，意味着可以对另一个函数动态的传递代码
+        */
+
+        //最重要的是44行的函数代码，具有灵活性
+
+         class Person {
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+        }
+
+        const personArr =[
+        new Person("孙悟空",18),
+        new Person("沙和尚",38),
+        new Person("红孩儿",8),
+       ]
+    
+    //filter()函数用来对数组进行过滤
+
+    /*
+      目前我们的函数只能过滤出数组中age属性小于18的对象
+      我们希望过滤更加灵活:
+        比如:过滤数组中age大于18的对象
+                      age大于60的对象
+                      age大于n的对象
+          过滤数组中name为xxx的对象
+          过滤数组中的偶数
+          ...
+      
+      
+    */
+
+         function filter(arr,cb){
+        
+        const newArr=[]
+        for(let i=0; i<arr.length; i++){
+        if(cb(arr[i])){
+            newArr.push(arr[i])
+          }
+        }
+      return newArr
+    }
+   
+
+    //我们定义这种回调函数的形式比较少见，通常回调函数都是匿名函数
+    //即使用一次便失效，一次性函数
+
+   /*
+      function fn(a){
+         return a.age<18
+        
+     } 不会这么写
+    */
+    //ocp原则：对扩展开放，对修改关闭
+   
+   const result=filter(personArr,fn)
+   //一般直接在调函数时写
+
+   const result1=filter(personArr,a=>a.name ==="孙悟空")
+   result=filter(personArr,age>=18)
+
+   const arr=[1,2,3,4,5,6,7,8,9,10]
+   result =filter(arr,a=> a%2===0)
+   console.log(result)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

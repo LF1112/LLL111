@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+    <script>
+        /* 
+         由如下一个数组
+           arr=[1,2,1,3,2,4,5,5,6,7]
+        
+        编写代码，去除数组中重复的元素-->[1,2,3,4,5,6,7] 
+        */
+
+        arr=[1,2,1,3,2,4,5,5,6,7]
+        /*
+          ①arr.splice(2,1)//1.2.3.2.4.5.5.6.7
+           arr.splice(3,1)//1.2.3.4.5.5.6.7
+           arr.splice(4,1)//1.2.3.4.5.6.7
+        */
+
+       
+          //②分别获取数组中的元素
+        for(let i=0;i<arr.length;i++){
+          console.log(arr[i])
+          //获取当前值后边的所有值
+          for(let j=i+1;j<arr.length;j++){
+            //console.log(arr[j])
+            //判断两个数是否相等
+            if(arr[j]===arr[i]){
+              //出现了重复元素，删除后面的元素，j
+              arr.splice(j,1)
+
+              /*
+                当arr[i]和arr[j]相同时，他就会自动删除j位置的元素
+                然后j+1位置的元素会变为j位置，而j位置已经比过了，不会重复比较
+                所以会出现漏比较的情况
+
+                解决办法：当删除一个元素，需要将该位置的元素再比较一次
+
+              */
+                j--//重复比较删除位置
+            }
+          }
+        } 
+        
+        // ③获取数组中的元素
+        // for(let i=0;i<arr.lenth;i++){
+        //   //找arr[i]后面还有没有和它值相同的值，找到了会返回一个索引
+        //   const index=arr.indexOf(arr[i],i+1)//第二个参数，指定从i后面一个位置开始找
+        //   if(index!=-1){
+        //     //出现重复内容
+        //     arr.splice(i)
+        //   }
+        // }
+
+
+        //④
+        const newArr=[]
+
+        //for-of，将数组遍历,将ele中的值传给arr
+        for(let ele of arr){
+          //console.log(ele)===arr
+          if(newArr.indexOf(ele)===-1){//判断newArr中有无ele的值
+            newArr.push(ele)//===-1成立，则添加ele中的值给newArr
+            //则表示，原数组的值在新数组中只会添加一次
+          }
+        }
+
+        console.log(newArr)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

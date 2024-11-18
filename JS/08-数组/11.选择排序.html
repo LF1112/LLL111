@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择排序</title>
+    <script>
+        /*
+        选择排序
+          思路2:9,1,3,2,8,0,5,7,6,4
+          -取出一个元素，然后将其他元素和该元素进行比较，如果其他元素比该元素小则交换两个元素的位置
+          -例子：
+            9和1比，换：1，9...；1和3比，不换...1和0比，换
+            最终变为0，9，3，2，8，1，5，7，6，4
+            以此类推...
+            从第一个位置开始逐次往后正确
+            ...
+
+          
+           
+        */
+
+        const arr=[9,1,3,2,8,0,5,7,6,4]
+
+        for(i=0;i<arr.length;i++){
+            for(j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    let temp=arr[i]
+                    arr[i]=arr[j]
+                    arr[j]=temp
+                }
+            }
+        }
+
+       /* 
+         let t=0//临时变量用来存储arr[i]的值
+         for(j=0;j<arr.length;j++){
+          
+          for(let i=0;i<arr.length-1=j;i++){
+        
+            if(arr[i]>arr[i+1]){
+            
+              t=arr[i]
+              arr[i]=arr[i+1]
+              arr[i+1]=t
+           }
+         }
+         } 
+         该方法第一次比需要9次，但依次往后就只用比arr.length-j-1次
+         如：第二次时，8和9不需要比较也是正确的，所以只用比8次
+         */
+
+
+         
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

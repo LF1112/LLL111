@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法练习2</title>
+    <script>
+       /* 
+         有一个数组：
+          [9,1,3,2,8,0,5,7,6,4]
+        编写代码对数组进行排序-->0,1,2,3,4,5,6,7,8,9
+
+        思路一:
+        9,1,3,2,8,0,5,7,6,4
+         -比较相邻的两个元素,然后根据大小来决定是否交换它们的位置
+         */
+         const arr=[9,1,3,2,8,0,5,7,6,4]
+         let t=0//临时变量用来存储arr[i]的值
+         for(j=0;j<arr.length;j++){
+          //第一次比较
+          for(let i=0;i<arr.length-1;i++){
+           //arr[i]前边的元素，arr[i+1]后边的元素
+            if(arr[i]>arr[i+1]){
+             //大数在前，小数在后，需要交换两个元素的位置
+              t=arr[i]
+              arr[i]=arr[i+1]//将arr[i+1]的值赋给arr[i]
+              arr[i+1]=t//修改arr[i]的值
+             //但仅此不够，代码有个问题，i<arr.length,则arr[i]的值是0~9，arr[i+1]是0~10，但索引没到10
+             //所以arr[i+1]一定有一个undefined的值
+             //纠正方式：i<arr.length-1
+           }
+         }
+         }
+         
+         //但因为一次循环只能排一个数，所以几个数循环几次，就直接套个循环在外面
+         //又由于，因为循环arr.length-1次时，其余数都正确，仅剩的一个数必定正确
+         //故直接循环arr.length-1次足以
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

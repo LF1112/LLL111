@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的方法</title>
+    <script>
+        /*所有字符串方法都是非破坏性的
+         字符串：
+          -字符串其本质就是一个字符数组
+          -"hello"——>["h","e","l","l","o"]
+          -字符串的很多方法和数组是非常类似的
+          -属性和方法：
+                -length 获取字符串的长度
+                -字符串[索引]获取指定位置的字符
+                  -字符串.at()(实验方法)
+                   根据索引获取字符，可以接受负索引
+                  -字符串.charAt()
+                   根据索引获取字符，但不能为负数
+                -字符串.concat()
+                     -用来连接两个或多个字符串（更推荐直接用加法字符串）
+                -字符串.includes()
+                     -用来检查字符串中是否包含某个内容
+                       true/false
+
+                -字符串.indexOf()
+                -字符串.lastIndexOf()
+                   -查询字符串中是否包含某个内容
+                   -有就返回第一次出现的索引，没有就返回-1
+
+                -字符串.startsWith()
+                    -检查字符串是否以...开始
+                -字符串.endsWith()
+                    -检查字符串是否以...结束
+                
+                -字符串.padStart()
+                -字符串.padEnd()
+                     -通过添加指定的内容，使字符串保持某个长度
+
+                -字符串.replace("X","Y")
+                -字符串.replaceAll("X","Y")
+                    -用Y替换X，前替换只第一个，后替换全部
+
+                -字符串.slice()
+                -字符串.substring()
+                    -对字符串进行切片（截取字符串）
+
+                -字符串.split()
+                      -用来将一个字符串拆分为一个数组
+                -字符串.join()
+                      -将一个数组转换为字符串
+
+                -字符串.toLowerCase()
+                      -将字符串转换为小写
+                -字符串.toUpperCase()
+                      -将字符串转换为大写
+
+                -字符串.trim()
+                     -消除字符串前后空格
+                -字符串.trimStart()
+                     -消除字符串前面空格
+                -字符串.trimEnd()
+                     -消除字符串后面空格
+                
+        */
+
+        let str="hello"
+
+        // console.log(str[0])
+
+        //对字符串进行遍历
+        //for也行，但是for-in不行，因为字符串不是数组
+        
+        for(let char of str){
+          console.log(char)
+        }
+
+        str="hello hello how are you"
+
+        // console.log(str.includes("tom"))//检查str中是否含有tom
+        //true/false
+
+        // console.log(str.includes("how",12))//ture
+        //第二个参数为指定的起始查询的位置
+
+        // console.log(str.endsWith("you"))//检查字符串是否以...结束
+        // console.log(str.startsWith(""))
+
+        str="100"
+
+        console.log(str.padStart(7,0))
+        //一开始为长度为3的字符串，后面为长度为7的字符串，第二个参数为填补的为0，不写为空格
+        
+        str="hello hello how are you"
+
+        let result=str.replace("hello","abc")//用后替换前,只替换一个
+        let result2=str.replaceAll("hello","abc")//替换全部
+
+        // console.log(result)
+
+        result=str.slice(12,15)
+        result=str.substring(12,15)//区别，后者比较聪明，
+        result=str.substring(15,12)//此时会自动更换错误的位置
+
+        // console.log(result)
+
+        str.substr(2,5)//起始位置，往后五个字符
+        //"llo h"不是标准方法
+
+       str="abc@bcd@efg@jqk"
+        let result3 =str.split("@")//传谁,从谁开始拆,传的消失,将字符串转换为数组
+        console.log(result)//["abc","bcd","efg","jqk"]
+       
+       result=str.join(result3)//'abc,bcd,efg,jqk'数组转换为字符串
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可变参数</title>
+    <script>
+        /*
+          arguments的缺点：
+              1.自定义的知道不限制参数数量，但如果不是自己定义的会理解成不参的以为可以直接调用
+              2.本身不是一个数组，不能用数组的方法
+          所以JS中有一个替代的方法：可变参数
+        */
+       function fn(){
+        /*
+          arguments
+             -arguments是函数中又一个隐含参数
+             -arguments是一个类数组对象（伪数组）
+                和数组相似，可以通过索引来读取元素，也可以通过for循环变量，但是它不是一个数组对象，不能调用数组的方法
+             -arguments用来存储函数的实参，
+                 无论用户是否定义形参，实参都会存储到arguments对象中
+                 可以通过该对象直接访问实参
+        */
+        //console.log(arguments.length)
+        //console.log(arguments[0])
+            //数组的静态方法,是数组返回true反之false
+        console.log(Array.isArray(arguments))//false
+           
+            //通过循环遍历，此时可以遍历；用for-of也可以
+    //     for(let i=0;i<arguments.length;i++){
+    //         console.log(arguments[i]);
+    //     }
+
+    // for(let v of arguments ){
+    //         console.log(v)
+    //       }
+
+           //报错，不能使用数组的方法，因为其本身不是数组
+          arguments.forEach(element => {
+             console.log(ele);
+              })
+    }
+
+    //    fn(1,10,33)
+
+    //定义一个函数，可以求任意个数值的和
+    //如果再function中定义形参，则范围太局限，此时就可以使用arguments不用形参也能使用
+    function sum(){
+        //通过arguments，可以不受参数数量的限制更加灵活的创建函数
+        let result =0
+
+        for(let num of arguments ){
+            result=result+num
+        }
+        return result
+    }
+
+    /*
+      可变参数：在定义函数时可以将参数指定为可变参数
+        -可变参数可以接收任意数量的实参，并将它们统一存储在一个数组中
+       function fn（...名字），有...即说明“名字”为可变参数
+       
+       -可变参数的作用和arguments基本是一致，但是也具有一些不同点，
+         1.可变参数的名字可自定义
+         2.可变参数就是一个数组，可以直接使用数组的一个方法
+         3.可变参数可以配合其他参数一起使用（即是否定义形参都不影响）
+         
+
+         当可变参数与普通参数一起使用时，需要将可变参数写到最后
+    */
+
+    function fn2(...args){
+        //想访问这个参数直接打印args
+        console.log(args)
+    }
+
+    function sum2(...num) {
+        return num.reduce ((a,b)=>a+b,0)
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

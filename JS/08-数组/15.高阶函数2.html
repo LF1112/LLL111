@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数2</title>
+    <script>
+
+        /*
+          希望在someFn函数执行时，可以记录一条日志
+          日志：记录每一次函数调用的记录
+
+          在不修改原函数的基础上，为其增加记录日志的功能
+
+          可以通过高阶函数，来动态的生成一个新函数
+        */
+
+        // function someFn(){
+        //     //console.log("记录日志")
+        //     return "hello"
+        // }
+
+        // function outer(){
+        //     return ()=>{}
+        // }//因为每次调用都会产生一个新函数，每次都是新生成的
+        // //所以此时就可以在outer里对函数进行一个配置，使它能动态的生成
+        // //根据我们的需要去生成函数
+
+        // let result =outer()
+        
+        // console.log(result)
+
+
+//使someFn具有记录日志的功能且不破坏原函数
+//直接调一定不能，所以要根据someFn生成一个新函数，新函数要具有新旧功能
+//此时运用高阶函数
+        function someFn(){
+            return "hello"
+        }
+
+        //cb是想让谁增加功能就传谁
+        function outer(cb){
+            return ()=>{
+                //cb()
+                const result=cb()//获取返回值
+                return result//然后将原返回值作为这个函数的返回值返回
+            }
+//让返回的函数具有相同功能,
+//规律：调someFn返回值为新函数中含cb（someFn）函数
+//但是没有原函数的返回值，所以此时就具有了第43行代码
+        }
+
+        let result =outer(someFn)//传somefn见第41行代码，且此时变为间接调用
+        //所以此时想对outer函数怎么改就怎么改
+        
+        console.log(result)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数作为参数</title>
+    <script>
+        /*在JS中，函数也是一个对象（一等函数）
+            别的对象能做的事情，函数也可以
+        */
+
+        /*①.function fn(a){
+            console.log("a=",a)
+        }
+        let obj={name:"孙悟空"}
+        function fn2(){
+            console.log("我是fn2")
+        }
+        fn(fn2)//打印结果为a=f fn2(){...}
+        */
+       
+       /*② function fn(a){//----→fn(fn2),a=fn2
+            a()        //所以为fn2()即为调用了fn2则显示fn2中的程序
+        }
+        let obj={name:"孙悟空"}
+        function fn2(){
+            console.log("我是fn2")
+        }
+        fn(fn2)//此时打印为“我是fn2”
+        */
+
+        function fn(a){
+            a()
+        }
+        let obj={name:"孙悟空"}
+        function fn2(){
+            console.log("我是fn2")
+        }
+        fn(function(){
+            console.log("我是匿名函数")
+        })//原理同②一致
+        //fn(()=>console.log("我是箭头函数"))也可
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

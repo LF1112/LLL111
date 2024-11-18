@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+    <script>
+        /*
+           this
+            -函数在执行时，JS解析器每次都会传递进一个隐含的参数
+            -这个参数就叫做 this
+            -this会指向一个对象
+               -this所指向的对象会根据函数调用方式的不同而不同
+                  1.以函数形式调用时，this指向的是window
+                  2.以方法的形式调用时（谁调用的，this就是谁），this指向的时调用方法的对象
+        */
+        function fn(){
+        //console.log(this === window)
+        console.log("fn打印"，this)
+       }
+       // fn()
+       const obj={name:"孙悟空"}
+       obj.test =fn
+       obj.test()//此时==fn（），因为21行。打印结果为“fn打印‣{name：“孙悟空”，test：f}”
+
+       const obj2= {name:"猪八戒",test:fn}
+       obj2.test()//打印结果为“fn打印‣{name：“孙悟空”，test：f}”
+
+       //由于只更改name属性的话log中的值不变打印的结果不变，故要变更可用下面方法
+       const obj3={
+             name:"沙僧"
+             sayHello:function(){
+                console.log("沙和尚")//=console.log("this")
+                }
+            }
+            const obj4={
+                name:"唐僧大官人"
+                sayHello: function(){
+                    console.log("唐僧")}//console.log("this")
+                }
+            // 为两个对象添加一个方法，可以打印自己的名字
+            obj3.sayHello()
+            obj4.sayHello()
+        //相当于调用obj中的什么函数，此时log中的内容为this
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

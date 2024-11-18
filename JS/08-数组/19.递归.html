@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+    <script>
+        /*
+          递归
+            -调用自身的函数称为递归函数
+            -递归的作用和循环是基本一致的
+          eg：
+            function fn（）{
+                fn（）
+            }
+            fn（）
+        */
+
+        //创建一个函数，可以用来求任意数的一个阶乘
+        //用循环解决
+        function jiecheng(num){
+            //创建一个变量，用来记录结果
+           let result=1
+           for(let i=2;i<=num;i++){
+            result=result*i
+           }
+           return result
+        }
+        let result=jiecheng(3)
+        //console.log(result)
+
+        /* 
+          用递归解决 
+             5!=4!*5
+             4!=3!*4
+             3！=2!*3
+             2!=1!*2
+          递归的核心思想就是将一个大的问题拆分成一个一个小的问题，小的问题解决了，大的问题也就解决了
+
+          编写递归函数，一定要包含两个要点
+            1.基线条件————递归的终止条件
+            2.递归条件————如何对问题进行拆分+
+
+          递归的作用和循环是一致的，不同点在于，递归思路比较清晰简洁
+          循环的执行性能比较好
+             在开发中，一般的问题都可以用循环解决，也是尽量去使用循环，少用递归
+             只在一些使用循环解决比较麻烦的场景下，才使用递归
+        */
+
+        function jiecheng2(num){
+            //基线条件
+            if(num===1){
+                return1
+            }
+
+            //递归条件
+            //num!=(num-1)!*num
+            return jiecheng2(num-1)*num
+        }
+
+        result=jiecheng2(5)
+        /*
+          调用jiecheng2(5)，不走if所以走递归
+              -就有return jiecheng2(4)*5
+                   -此时jiecheng2(4)又在调用jiecheng2故循环往复
+                -return jiecheng2(3)*4
+                -return jiecheng2(2)*3
+                -return jiecheng2(1)*2
+                   -此时num=1所以执行if
+                -return 1
+        */
+        console.log(result)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

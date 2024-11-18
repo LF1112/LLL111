@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+    <script>
+        class person{
+            name="孙悟空"//当我们在类中直接指定实例属性的值时，
+                        //意味着我们创建的所有对象的属性都是这个值
+            age=18
+            gender="男"
+
+            sayhello(){
+                console.log(this.name)
+            }
+        }
+
+        //创建一个person的实例
+        const p1=new person()
+        const p2=new person()
+        const p3=new person()
+
+        console.log(p1)
+        console.log(p2)
+        console.log(p3)
+
+    /*
+        有些情况需要所有所有对象的属性相同，但大多不是
+        此时需要创建函数（创建对象时构造的函数），构造函数是类当中定义的函数
+    */
+       class person{
+        /*
+         name
+         age
+         gender   是可省略的
+        */  
+
+        //在类中可以添加一个特殊的方法constructor
+        //该方法我们成为构造方法或者构造函数
+        //构造函数会在我们调用类创建对象时执行
+        constructor(name,age,gender){
+             //console.log("构造函数执行了",name,age,gender)
+             //可以在构造函数中，为实例属性赋值
+             //在构造函数中，this表示当前所创建的对象
+             this.name =name//this.name是对象的属性，name是参数
+             this.age=age
+             this.gender=gender
+        }
+      }
+      const p1= new person("孙悟空",18,"男")
+      const p1= new person("猪八戒",28,"男")
+      const p1= new person("沙和尚",38,"男")
+</script>
+</head>
+<body>
+    
+</body>
+</html>

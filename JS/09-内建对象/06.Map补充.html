@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map补充</title>
+    <script>
+        
+        const map=new map()
+
+        map.set("name","孙悟空")
+        map.set("age",18)
+        map.set({},"hh")
+
+        //将map转换为数组
+        /*①用方法*/const arr=Array.from(map)//arr就是map转换为数组的新数组，Array是数组方法
+        //转换为二维数组[["name,""孙悟空"]，["age",18]]
+        console.log(arr)//[Array(2),Array(2)]
+
+        //如添加，则变为[[][][]]
+        map.set({},"hh")//且变为[[][][{...}，'hh']]
+
+        /*②展开map*/
+        const arr1 =[...map]//推荐，简单好用
+
+        //将二维数组转换为map
+        const map2=new Map([["name","猪八戒"],["age",18],[{},()=>{}]])
+
+        console.log(map2)
+        //这样就是创建了有3个键值对的map
+
+        //遍历map
+        /*①*/for(const entry of map){
+            //console.log(entry)//获得3个数组
+            
+            //获取里面的key和value，因为是数组可以用到解构赋值
+            const[key,value]=entry
+            console.log(entry,key,value)
+
+        }
+        /*②*/
+        map.forEach((key,value,c) => {
+            console.log(key,value,c)
+        })//且有第三个参数C，c为map对象本身
+        //entry就是键值对的意思
+
+        /*
+          遍历三个方法（手动遍历）
+            map.keys()--获取map的所有key
+            map.values()--获取map中所有的value
+            map.entries()--获取map中的所有键值对
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的解构</title>
+    <script>
+        /*
+          对象解构比数组解构复杂
+          因为赋值的名称得对应
+        */
+        const obj={name:"孙悟空",age:18,gender:"男"}
+
+        //let {name,age,gender}=obj//声明变量同时解构对象
+        //非第14行则为：let name=obj.name....
+
+        /*
+           let name,age,gender
+           {name,age,gender}=obj
+           此时会报错，因为以{}开头表示一个代码块，给代码块赋值？（怪）
+           解决办法：;({name,age,gender}=obj),这样就不一{}开头,;为了区分代码防止报错
+           let{address}=obj//没有的属性返回undefined
+        */
+        console.log(name,age,gender)
+
+        //名称不对应不能赋值
+        //let{a,b,c}=obj
+        //console.log(a,b,c)
+        //undefined  undefined undefined
+        //解决办法：
+        let{name:a,age:b,gender:c}=obj
+        console.log(a,b,c)
+        //别名
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

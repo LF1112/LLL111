@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包使用的注意事项</title>
+    <script>
+    
+       //最基本的闭包如下：
+       function outer(){
+        let someVariable="someValue"
+
+        function inner(){
+            console.log(someVariable)
+        }
+        return inner
+       }
+
+        /*
+          闭包的生命周期：
+            1.闭包在外部函数调用时产生，外部函数每次调用都会产生一个全新的闭包
+            2.在内部函数丢失时销毁（内部函数被垃圾回收了，闭包才会消失）
+
+          注意事项：
+              闭包主要用来隐藏一些不希望被外部访问的内容
+              隐藏一些东西则就需要占用一定的空间，说明闭包需要占用一些内存空间
+
+              相较于类来说，闭包比较浪费内存空间（主要因为类可以使用原型，而闭包不能）
+                  -需要执行次数较少时，使用闭包
+                  -需要大量创建实例时，使用类
+                  
+        类有this，使用时要多小心，因为this不稳定
+        能用闭包用闭包
+        */
+
+        function outer2(){
+            let num =0
+            return()=>{
+                num++
+                console.log(num)
+            }
+        }
+        let fn1=outer2()
+        let fn2=outer2()
+        fn1()//1
+        fn2()//1
+        //因为fn1,fn2的num不是同一个，因为两者是独立的闭包
+
+        fn1=null
+        fn2=null
+        //设置后，此时没有东西在对两个函数进行引用
+        //此时会被当成垃圾数据回收，闭包功能消失
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

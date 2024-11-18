@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+    <script>
+        /*
+          Map
+            -Map用来存储键值对结构的数据（key-value）
+            -object中存储的数据就可以认为是一种键值对结构
+            -Map和object的主要区别：
+               -object的属性名只能是字符串或符号
+                 JS解释器会自动将其转换为字符串
+               -Map中任何类型的值都可以成为数据的key
+        */
+
+        const obj2={}
+       const obj={
+        "name":"孙悟空",
+        'age':18,
+        [Symbol()]:"hh",
+        [obj2]:"xx"
+        //该obj2与对象obj2没关系
+       }
+
+
+       /*
+         创建：
+             new Map()
+
+         属性和方法：
+              map.size()获取map中键值对的数量
+              map.set(key,value)向map中添加键值对
+              map.get(key)根据key获取值
+              map.delete(key)删除指定数据
+              map.has(key)检查map中是否包含指定键
+              map.clear()删除全部键值对
+       */
+       //创造一个map
+       const map=new Map()
+
+       //console.log(map)//Map(0){size:0}
+
+       console.log(typeof map)//'object'
+       map.set("name","孙悟空")//'name'=>'孙悟空'
+
+       map.set(obj2,"hehe")//{...}=>'hehe',对象变成了钥匙，任何对象都能成为钥匙
+       map.set(NaN,"hhh")
+
+       map.delete(NaN)//删除NaN
+       map.clear()//调用后清除所有内容
+
+       console.log(map)
+       console.log(map.get("name"))//孙悟空
+       console.log(map.get(obj2))//不能是匿名数据{}
+       console.log(map.has(name))//true
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

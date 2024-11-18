@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的方法2.0</title>
+    <script>
+        //以下方法都为高阶函数，因为都需要回调函数
+
+
+        let arr=["a","c","e","f","d","b"]
+        let arr2=[2,3,1,9,0,4,5,7,8,6,10]
+        //0，1，10，2，3，45，6，7，8，9
+        /*
+          sort()
+          破坏性
+            -sort用来对数组进行排序（会改变原数组）
+            -sort默认会将数组升序排列
+
+            -参数：
+                -可以传递一个回调函数作为参数，通过回调函数来指定排序规则
+                （a,b）=>a-b---升序
+                （a，b）=>b-a---降序
+
+         那为何还要引进冒泡排序等？
+         因为sort存在一个问题：对arr2进行调用则为第10行代码
+         原因如下：
+
+         注意：sort默认会按照Unicode编码进行排序，所以如果直接通过sort对数字进行排序
+              可能会得到一个不正确的结果
+        sort使用时，为使适用范围更广就会将元素转换成字符串排序
+        */
+
+        console.log(arr)
+       // arr.sort()
+       arr.sort((a,b=>a-b))//升序
+       arr.sort((a,b)=>b-a)//降序
+        console.log(arr)
+
+
+        /*
+          forEach()
+            -用来遍历数组
+            -它需要一个回调函数作为参数，这个回调函数会被调用多次
+            -数组中有几个元素，回调函数就会调用几次
+              每次调用，都会将数组中的数据作为参数传递
+            
+            -回调函数中有三个参数：
+            Element 当前的元素
+            index   当前元素的索引
+            array   被遍历的数组
+        */
+
+        arr=["孙悟空","猪八戒","沙和尚"]
+
+         
+        // arr.forEach(()=>{
+        //     console.log(123)
+        // })//则123会出现3次
+        
+
+        arr.forEach((Element,index,array)=>{
+            console.log(Element,index,array)
+        })
+
+
+        /*
+           filter()
+           非破坏性,不会影响原数组，而是返回新数组
+              -将数组中符合条件的元素保存到一个新数组中
+              -需要一个回调函数作为参数
+                会为每一个元素去调用回调函数，并根据返回值来决定是否将元素添加到新数组
+              -因为也是回调函数作为参数，所以也存在三个参数，其中ele为当前元素
+        */ 
+
+        arr=[1,2,3,4,5,6,7,8]
+        //获取数组中所有偶数
+        let result=arr.filter(ele=>ele>5)
+        //格式：arr.filter(ele=>true/false),ture则放入新的数组里，false不放
+        
+        console.log(result)
+
+
+        /*
+          map
+          非破坏性方法
+          关键不在于生成一个新数组，而是在于根据已有元素生成新数组
+            -根据当前数组生成一个新数组
+            -需要一个回调函数作为参数，且参数与filter，forEach都一样
+              回调函数的返回值会成为新数组中的元素
+        */
+
+        //result=arr.map(ele=>123)//因为原数组中有8个元素，所以新数组中会有8个123
+
+        result=arr.map(ele=>ele*2)//获得已有数组中的二倍
+
+        arr=["孙悟空","猪八戒","沙和尚"]//通过map给已有数组加标签
+        result=arr.map(ele=>"<li>"+ele+"</li>")
+        
+        console.log(result)
+
+        /*
+          reduce()
+            -可以用来将一个数组中的所有元素整合为一个值
+            -需要一个回调函数作为参数，值与上三不同是(a,b)
+            -当=>后传入第二个值（初始值）时，先计算传入的值和第一个值
+            -参数：
+                 1.回调函数，通过回调函数来指定合并的规则
+                 2.可选参数，初始值
+              
+        */
+
+        arr=[1,2,3,4,5,6,7,8]
+
+        // result=arr.reduce((a,b)=>{
+        //     console.log(a,b)
+        //     return a+b
+        // })
+        //a是前面的值，b是后面的；
+        //例如，一开始a为1b为2,经过=>的操作，a就是上次运行的结果，b就是3,以此类推
+
+        result=arr.reduce((a,b)=>a+b,10)
+        console.log(result)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

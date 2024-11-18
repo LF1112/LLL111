@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <script>
+        /*var a = 1
+        function fn(){
+            a =2//给a赋值此时外面的a=1被赋值成=2
+         console.log(a)//2
+        }
+        fn()
+        console.log(a)// 2 因为被赋值了在全局变量中改变了故也为2
+        */
+//变量和函数的提升同样适用于函数作用域
+        /*var a=1
+        function fn(){
+            “此时会有var a被提前但并未赋值，由于22行有a的赋值，所以外面的var a不影响函数的”
+            （相当于有一个 var a在这）
+            console.log(a)//undefinedvar 
+            var a=2//这是给内部的var a赋值，不影响外层
+            console.log(a)// 2
+        }
+        fn()
+        console.log(a)//1 
+        */
+
+        /*var a = 1
+        function fn(){
+            console.log(a)//1
+            a =2
+            console.log(a)//2
+        }
+        fn()
+        console.log(a)// 2 
+        */
+       //定义形参相当于在函数中声明了对应的变量，但没赋值
+        /*var a = 1
+        function fn(a){
+            console.log(a)//undefined
+            a =2
+            console.log(a)//2
+        }
+        fn()
+        console.log(a)// 1
+        */
+
+        /*var a = 1
+        function fn(a){
+            console.log(a)//10
+            a =2//因为函数中有形参a故此时的赋值影响的是函数的形参a而非外层的a
+            console.log(a)//2
+        }
+        fn(10)
+        console.log(a)// 1
+        */
+
+       /* var a = 1
+        function fn(a){//fn（a）中的a为形参
+            console.log(a)//1！！且为局部变量a
+            a =2//还为局部变量而非全局
+            console.log(a)//2
+        }
+        fn(a)//这个a为实参，此时传的为外层的a=1
+        console.log(a)// 1
+        */
+
+        //var a和函数都会提前，此时var a只声明不赋值，所以第1个var a生效后后面2个都没有实际功效了
+        //故最终为var a和function a会竞争
+        //又因为function a又能声明又能赋值，所以为function a提前
+
+        console.log(a)//打印的一定为函数，且为alert（2）---2
+        var a = 1
+        console.log(a)//1
+
+        function a(){
+            alert(2)//此代码不会执行了，因为被提升了，相当于放在了第73行前面
+        }
+        console.log(a)//故此时结果于上一个log相同----1
+
+        var a=3
+        console.log(a)//3
+
+        var a=function(){
+            alert(4)
+        }
+        console.log(a)//4
+
+        var a//这行代码不执行，直接忽略
+        console.log(a)//故结果于上一个log相同---4
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

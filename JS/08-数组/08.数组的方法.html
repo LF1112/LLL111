@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的方法</title>
+    <script>
+        const arr =["孙悟空","猪八戒","沙和尚"]
+
+        /*
+        均为破坏性方法：会改变原来的对象
+          push()
+            -向数组的末尾添加一个或多个元素，并返回一个新数组的长度
+          pop()
+            -删除并返回数组的最后一个元素，返回值即为你删的是谁返回谁
+          unshift()
+            -向数组的开头添加一个或多个元素并返回新的长度
+          shift()
+            -删除并返回数组的第一个元素
+          splice()
+            -可以删除，添加，插入数组中的元素。
+            添加即为替换（x,1,"xxx"），将xxx替换到x的位置
+            插入为（x，0，"xxx"）,将xxx插入x的位置前
+            -参数：
+               1.删除的起始位置
+               2.删除的一个数量
+               3.要插入的元素
+            -返回值：
+                1.返回被删除的元素
+
+          reverse()
+            -反转数组
+
+        */
+
+        let result=arr.push("唐僧","白骨精","蜘蛛精")
+        //console.log(result)//5["....."]
+
+        console.log(arr)
+
+        result=arr.pop()
+
+        arr.unshift("牛魔王")
+
+        arr.shift()
+
+
+        //console.log(result)//白骨精
+
+
+        console.log(arr)
+
+        arr=["孙悟空","猪八戒","沙和尚","唐僧"] 
+        arr.splice(1,2)//从索引为1的位置往后删2个
+        console.log(arr)//["孙悟空"，"唐僧"]   
+       /*  result= arr.splice(1,2)
+        console.log(result)//猪八戒，沙和尚 */
+       
+        result= arr.splice(1,2,"牛魔王")//将添加的值放入删除的索引位置，可以添加不止一个
+        console.log(arr)//孙悟空，牛魔王，唐僧
+
+        result=arr.splice (1,0,"牛魔王")
+
+        console.log(arr)
+
+
+        arr=["a","b","c","d"]
+        arr.reverse()
+        console.log(arr)//"d","c","b","a"
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

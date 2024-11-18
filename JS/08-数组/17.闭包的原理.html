@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的原理</title>
+    <script>
+        /*
+          闭包的使用：要藏东西的时候用闭包
+        */
+
+        /*
+          函数的外层作用域，在函数创建时就已经确定了（词法作用域）
+            和调用的位置无关
+
+          闭包利用的就是词法作用域
+        */
+
+        let a ="全局变量a"
+
+        function fn(){
+            console.log(a)//该函数是在全局作用域中定义的，该函数的外层作用域就是全局作用域
+        }
+
+        function fn2(){
+            let a="fn2中的a"
+            //fn2的局部变量
+            fn()
+            //所以该作用域也是全局，不会去fn2中找，看不到23行
+        }
+        //fn2()//所以此时打印的是“全局变量a”
+
+        function fn3(){
+            let a ="fn3中的a"
+
+            function fn4() {
+                console.log(a)
+            }
+            return fn4
+        }
+        let fn4=fn3()
+
+        fn4()//在全局调用的fn4也没关系，函数创建时的外层作用域是谁就固定是谁
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

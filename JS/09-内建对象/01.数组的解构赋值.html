@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的解构赋值</title>
+    <script>
+        //内建对象：JS标准中定义的对象，在JS任何的解释器当中我们都可以直接使用的对象
+          //如：数组，object，function，原始值....
+        
+        /*
+          解构赋值：字面理解：分解一个对象的解构然后将它给赋值
+
+          作用：把一个数组或者是对象拆开，然后根据需要赋值给指定变量
+        */
+
+        const arr=["孙悟空","猪八戒","沙和尚"]
+
+        let a,b,c
+
+        // a=arr[0]
+        // b=arr[1]
+        // c=arr[2]
+        //该方法太麻烦,用下面的
+
+        [a,b,c]=arr//因为arr=["孙悟空","猪八戒","沙和尚"]，这就是解构赋值
+
+        //第17行和第24行可以简化为
+        let [d,e,f,g]=arr//声明同时解构,第4个为undefined
+        console.log(a,b,c)
+
+        //当有一个新的一模一样的数组出现重新赋值时，不会覆盖掉原数组
+        //但是此时要与前面的log区分，在前面加；
+        ;[d,e,f,g]=[1,2,3]
+        console.log(d,e,f,g)
+        //从26至32行两个代码为："孙悟空","猪八戒","沙和尚"&1，2，3,undefined
+
+        ;[d,e,f=1,g=10]=[1,2,3]//此时g的值为10，f的值为3
+        console.log(d,e,f,g);
+        //和原数组联合可写作==>;[d,e,f,g=g]=[1,2,3]
+
+        //[...X]表示剩下的都给X，所以解构数组中，可以使用...来设置获取多余的元素
+        let[n1,n2,...n3]=[4,5,6,7]//所以6，7都给n3
+
+        // console.log(n1,n2,n3)
+
+        //对函数的执行结果进行解构
+        function fn(){
+           return["二郎神","猪八戒"]
+        }
+
+        let [name1,name2]=fn()
+
+        //可以通过解构赋值来快速交换两个变量的值
+        let a1=10
+        let a2=20
+
+        //交换两个变量的值，除了先前的方法，用以下方法：
+        ;[a1,a2]/*进行解构赋值，两个变量a1，a2*/=[a2,a1]//表示新建一个数组，这是个数组的字面量，[20，10]
+
+
+        const arr2=["二郎神","猪八戒"]
+        console.log(arr2)
+
+        ;[arr2[0],arr2[1]]=[arr2[1],arr2[0]]
+        console.log(arr2)
+
+        console.log("a1=",a1)
+        console.log("a2=",a2)
+
+        /*
+          数组中可以存储任意类型的数据，也可以存数值
+             如果一个数组中的元素还是数值，则这个数值为二维数组
+        */
+
+        const arr3=[[1,2,3],[4,5,6]]
+
+        //遍历
+        for(let stu of arr3){
+          for(let v of stu){
+            console.log(v)
+          }
+        }
+
+        //let[[name,age,gender]]=arr3
+        //把猪八戒单独解构成一个对象则其内容直接赋值给了obj
+        let[[name,age,gender],obj]=arr3
+        console.log(name,age,gender)
+        console.log(obj)//['猪八戒'，28，'男']
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

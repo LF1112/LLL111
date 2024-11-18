@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <script>
+        /*
+           Date（构造函数）
+               -在JS中所有的和时间相关的数据都由Date对像来表示
+               -对象的方法：
+                      -getFullYear()获取4位年数 //不推荐使用
+                      -getMonth()获取月份，但是是索引（0-11）
+                      -getDate()返回当前是几日
+                      -getDay()返回今天是周几也是返回索引（0-6，0是周日）
+
+                      getTime()返回当前日期对象的时间戳
+                         时间戳：自1970年1月1日0时0分0秒到当前时间所经历的毫秒数
+                         计算机底层存储时间时，使用都是时间戳
+                      Date.new()静态方法，获取当前的时间戳
+        */
+
+        let d=new Date()//直接通过new Date()创建时间对象时，它创建的是当前的时间的对象
+         
+        // console.log(d)//当前时间
+
+        //创建一个指定时间
+        /*①
+          可以在Date()的构造函数中，传递一个表示时间的字符串
+          字符串格式："月/日/年/ 时：分：秒"
+          "年-月-日T时：分：秒"
+        */
+
+        d= new Date("10/20/1998 12:28:35")
+        
+        d =new Date()
+
+        result=d.getFullYear()//获取当前时间的年份，或者是定义的是哪年就是哪年
+        result=d.getMonth()//月份
+        result=d.getDate()//返回当前日期
+        result=d.getDay()//返回当前是周几
+
+        console.log(d)  
+        
+        /*②推荐：
+           new Date(年份，月，日，  时分秒毫秒..（可传可不传）)
+        */
+       d=new Date(2005,4,12)
+
+       result=d.getTime()
+
+       console.log(d)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

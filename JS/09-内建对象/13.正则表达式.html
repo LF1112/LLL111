@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+    <script>
+        /*
+           正则表达式(不是JS当中独有的)
+                  -正确的规则;正则表达式用来定义一个规则
+                  -通过这个规则计算机可以检查一个字符串是否符合规则
+                       或者将字符串中符合规则的内容提取出来
+                  -正则表达式也是JS中的一个对象,
+                       所以要使用正则表达式,需要先创建正则表达式的对象
+
+                      
+        */
+
+        let str="abc"
+        // new Regexp()可以接受两个参数(字符串)1.模式字符串(规则,正则表达式)2.标识(匹配模式)
+        let reg= new RegExp(str,"i")//通过构造函数来创建一个正则表达式的对象,但不能使用,因为无规则,所以需要在()中填写规则
+        // 传的是字符串，需要由字符串变成正则表达式 
+        //优点:因为里面传的为字符串,所以里面可以传变量,意味着可以动态的创建一个表达式
+        //缺点:因为是字符串所以如"\W"就会变为W,\转义字符,修改方法"\\w"
+
+        //使用字面量来创建正则表达式:/正则/匹配模式
+        reg= /a/i
+        // 传的是正则的规则
+        // console.log(reg)
+
+
+        reg=new RegExp("a")// 等价于reg=/a/,检查一个字符串中是否含有"xxx"
+       
+        //通过正则表达式检查一个字符串是否符合规则
+        let str1="a"
+
+        let result =reg.test(str)//true
+        // test表示测试
+
+         result =reg.test("b")//false
+         result =reg.test("abc")//true
+         result =reg.test("bcabc")//true
+        reg.test(str)//用reg的正则表达式test(检查)str是否符合规则
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

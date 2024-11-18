@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if及if-else语句及其练习</title>
+    <script>
+        //输入一个数判断为奇数还是偶数
+        
+       // let a= +prompt("请输入一个整数：") 这个为第一第二种情况的变量定义
+       
+        /*   ①if(a%2===0)
+              alert(`${a}偶数`)
+             else
+              alert(`${a}是奇数`)
+        */
+            //但是首先要判断输入的值是否合法，只有有效数字才能判断
+        //不能使用==或者===检查是否为NaN
+        //可以用isNaN()来检查一个值是否为NaN
+       /*② if(isNaN(a)){
+            alert("输入错误")
+        }else{
+            if(a%2===0)
+              alert(`${a}偶数`)
+             else
+              alert(`${a}是奇数`)
+        }
+        ②为：if(isNaN(a)){
+            alert("输入错误")＋①
+        */
+       //当输入的是浮点数时则很怪
+       //此时则从变量定义入手
+       let a=parseInt(prompt("请输入一个整数"))
+       if(isNaN(a)){              //或者为let a= +prompt("请输入一个整数：")
+            alert("输入错误")      //if(isNaN(a)||a%1！==0)
+        }else{
+            if(a%2===0)
+              alert(`${a}偶数`)
+             else
+              alert(`${a}是奇数`)
+            //③为let num=parseInt(prompt("请输入一个整数"))+②
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旧类</title>
+    <script>
+        /*
+           早期的JS中，直接通过函数来定义类
+             -一个函数如果直接调用 XXX()那么这个函数就是一个普通函数
+             -一个函数如果通过new调用 new xxx()那么这个函数就是一个构造函数
+
+        */
+
+       //代码太分散，所以一般用旧类时，放到立即执行函数
+       //然后在立即执行函数中返回一个person以及在立即执行函数外接收下
+           var person= (function)(){
+             /*
+             等价于：
+             class person{
+            */
+            function person (name,age) {
+            //在构造函数中，this表示新建的对象
+            this.name=name
+            this.age=age
+
+            //this.sayhello=function(){
+            //      console.log(this.name)
+            //}此时是向对象中添加方法，而不是原型中，若这样，一个对象一个方法，浪费没必要
+
+        }
+
+        //向原型中添加属性（方法）
+          person.prototype.sayhello=function(){
+            console.log(this.name)
+          }
+
+        //添加静态属性（类自身的属性）
+        person.staticproperty="xxx"
+        //静态方法
+        person.staticmethod= function(){}
+
+        return person
+        }()
+
+        /*
+        class myclass{
+
+        }//class定义的类一定得用new去调用
+        new myclass()
+        */
+
+        const p=new person(孙悟空,18)
+        console.log(p)
+
+        //继承
+        var animal=(function)(){
+            function animal (){
+
+            }
+            return animal
+        }()
+
+        var cat=(function)(){
+            function cat(){
+
+            }
+            //继承animal
+            cat.prototype= new animal()
+            return cat
+        }()
+         
+        var cat=new cat()
+
+        console.log(cat )
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

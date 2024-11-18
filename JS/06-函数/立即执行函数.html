@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+    <script>
+        /*在开发中应该尽量减少直接在全局作用域中编写代码!
+
+        所以我们的代码要尽量编写的局部作用域
+
+        如果使用let声明的变量，可以使用得来创建块作用域
+
+        var的变量相同值不同则前者的值被后者覆盖，可用函数解决但麻烦
+        */
+       
+        {
+            let a=10
+        }
+        //此时let处于两个不同块作用域中故此时若变量相同也不会报错
+        {
+            let a=20
+        }
+        function fn(){
+            var a= 10
+        }
+        fn()
+
+        function fn2(){
+            var a= 20
+        }
+        fn2()
+
+
+
+
+
+
+        //希望可以创建一个只执行一次的匿名函数
+
+        /*立即执行函数(IIFE)
+             -立即是一个匿名的函数，并它只会调用一次
+             -可以利用IIFE来创建一个一次性的函数作用域，避免变量冲突的问题
+        */
+           (function(){
+             let a=10
+              console.log(111)
+              }());//将function用（）括起来就可为立刻执行函数
+              //若不加；则GS自动看为（***）（***）调用函数的形式，但前者不为函数所以报错
+              //故需要手动添加；
+            (function(){
+                let a=20
+                console.log(222)
+             }())
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
